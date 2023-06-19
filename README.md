@@ -1,5 +1,5 @@
 # encryption_project
-    'bf_substitute_decoder.py': This file contains a brute-force decoder for a substitution cipher. It is designed by looking at the frequencies of letters and maps the letter with a certain frequency in the text to the letter with the same frequency in the englis language
+    bf_substitute_decoder.py: This file contains a brute-force decoder for a substitution cipher. It is designed by looking at the frequencies of letters and maps the letter with a certain frequency in the text to the letter with the same frequency in the englis language
 
     manual_decryptor.py: This file provides a manual decryption process for a specific encryption technique. It can be used to finish the decryption after using the brute-force method.
 
