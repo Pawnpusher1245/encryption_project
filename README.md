@@ -8,3 +8,5 @@
     substitution_cipher_decoder.py: This file contains a decoder specifically designed for a substitution cipher, given the encryptopn key it decodes the encrypted file. 
 
     substitution_cipher.py: This file implements a substitution cipher encryption technique. It maps letters to other random letters. 
+
+    vigenere_cipher.py implements the vigenere cipher https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher.
