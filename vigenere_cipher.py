@@ -1,43 +1,35 @@
-import encryption_functions as ef
+def subtract_letters(value, encrpytion_key):
+    """Subtracts letters (mod 26), where counting starts from 0"""
+    ascii_a = ord(value) - ord('a')
+    ascii_b = ord(encrpytion_key) - ord('a')
 
-def add_letters(a, b):
-    """Adds letters (mod 26), where counting starts from 0"""
-    ascii_a = ord(a) - ord('a')
-    ascii_b = ord(b) - ord('a')
-
-    result = (ascii_a + ascii_b) % 26
+    result = (ascii_a - ascii_b) % 26
 
     return chr(result + ord('a'))
 
-file_path = 'original.txt'
 key_path = 'key.txt'
-encrypted_file_path = 'modified.txt'
+encrypted_path = 'modified.txt' 
 
-index_tracker = 0
-encrypted_text = ""
-key = 'abaaaaaaaaaaa'
+# Opens the key from the file 'key.txt'.
+with open(key_path, 'r', encoding = 'utf-8') as file:
+      key = file.read()
+
 length_of_key = len(key)
 
-# Makes everything lowercase to ensure that the shifting is correct
-ef.make_lower(file_path)
+with open(encrypted_path, 'r', encoding = 'utf-8') as file:
+      file_content = file.read()
 
-# Stores the key in the file 'key.txt'.
-with open(key_path, 'w', encoding = 'utf-8') as file:
-      file.write(key)
+index_tracker = 0
+decrypted_text = ""
 
-with open(file_path, 'r', encoding = 'utf-8') as file:
-        file_content = file.read()
-
-# Makes an encrypted version according to the vigenere cipher.
 for character in file_content:
       if character.isalpha():
             index_tracker %= length_of_key
-            letter_to_add = key[index_tracker]
-            encrypted_text += add_letters(character, letter_to_add)
+            letter_to_subtract = key[index_tracker]
+            decrypted_text += subtract_letters(character, letter_to_subtract)
             index_tracker += 1
       else:
-            encrypted_text += character
+            decrypted_text += character
 
-# Stores the encrypted file.
-with open(encrypted_file_path, 'w', encoding = 'utf-8') as file:
-      file.write(encrypted_text)
+with open(encrypted_path, 'w', encoding = 'utf-8') as file:
+      file.write(decrypted_text)
